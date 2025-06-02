@@ -8,19 +8,19 @@ const {
   deleteBooking
 } = require('../controllers/bookingController');
 
-// GET /api/bookings - Obtener todas las reservas (con filtros opcionales)
+// Obtener todas las reservas con filtros
 router.get('/', getAllBookings);
 
-// GET /api/bookings/:id - Obtener una reserva específica
+// Obtener una reserva específica por ID
 router.get('/:id', getBookingById);
 
-// POST /api/bookings - Crear nueva reserva
+// Crear una nueva reserva
 router.post('/', createBooking);
 
-// PUT /api/bookings/:id - Actualizar reserva completa
+// Actualizar una reserva existente
 router.put('/:id', updateBooking);
 
-// DELETE /api/bookings/:id - Eliminar reserva
+// Eliminar una reserva
 router.delete('/:id', deleteBooking);
 
 module.exports = router;
