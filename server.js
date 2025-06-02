@@ -1,6 +1,6 @@
 require('dotenv').config();
 const express = require('express');
-const bookingRoutes = require('./routes/bookingRoutes');
+const bookingRoutes = require('./routes/bookingRoutes'); // Note the lowercase path
 
 const app = express();
 const PORT = process.env.PORT || 3000;
