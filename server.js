@@ -39,11 +39,18 @@ app.use((err, req, res, next) => {
   console.error(err.stack);
   res.status(500).json({ 
     error: 'Error interno del servidor',
-    message: err.message
+    message: err.message || 'Error interno'
   });
 });
 
-app.listen(PORT, () => {
+// Iniciar servidor de forma más segura
+const server = app.listen(PORT, () => {
   console.log(`Servidor ejecutándose en http://localhost:${PORT}`);
   console.log(`Ambiente: ${process.env.NODE_ENV}`);
+});
+
+// Manejo de errores no capturados
+process.on('unhandledRejection', (err) => {
+  console.error('Error no manejado:', err);
+  server.close(() => process.exit(1));
 });
