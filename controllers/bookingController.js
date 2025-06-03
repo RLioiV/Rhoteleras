@@ -1,4 +1,4 @@
-// Simulamos una base de datos en memoria
+
 let bookings = [
   {
     id: 1,
@@ -30,13 +30,13 @@ let bookings = [
 
 let nextId = 3;
 
-// Función helper para validar fechas
+
 const isValidDate = (dateString) => {
   const date = new Date(dateString);
   return date instanceof Date && !isNaN(date);
 };
 
-// Función helper para validar reserva
+
 const validateBooking = (booking) => {
   const required = ['hotel', 'roomType', 'guests', 'checkIn', 'checkOut', 'customerName', 'customerEmail'];
   const missing = required.filter(field => !booking[field]);
@@ -60,12 +60,11 @@ const validateBooking = (booking) => {
   return { valid: true };
 };
 
-// GET - Obtener todas las reservas con filtros
 const getAllBookings = (req, res) => {
   try {
     let filteredBookings = [...bookings];
     
-    // Aplicar filtros
+    
     const { hotel, roomType, status, guests, checkIn, checkOut } = req.query;
     
     if (hotel) {
@@ -117,7 +116,7 @@ const getAllBookings = (req, res) => {
   }
 };
 
-// GET - Obtener una reserva por ID
+
 const getBookingById = (req, res) => {
   try {
     const id = parseInt(req.params.id);
@@ -143,7 +142,7 @@ const getBookingById = (req, res) => {
   }
 };
 
-// POST - Crear nueva reserva
+
 const createBooking = (req, res) => {
   try {
     const validation = validateBooking(req.body);
@@ -186,7 +185,7 @@ const createBooking = (req, res) => {
   }
 };
 
-// PUT - Actualizar reserva
+
 const updateBooking = (req, res) => {
   try {
     const id = parseInt(req.params.id);
@@ -238,7 +237,7 @@ const updateBooking = (req, res) => {
   }
 };
 
-// DELETE - Eliminar reserva
+
 const deleteBooking = (req, res) => {
   try {
     const id = parseInt(req.params.id);

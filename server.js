@@ -1,6 +1,6 @@
 require('dotenv').config();
 const express = require('express');
-const bookingRoutes = require('./routes/bookingRoutes'); 
+const bookingRoutes = require('./Routes/BookingRoutes'); 
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -10,7 +10,7 @@ app.use(express.urlencoded({ extended: true }));
 
 app.use('/api/bookings', bookingRoutes); 
 
-// Solo mantén la ruta de health
+
 app.get('/api/health', (req, res) => {
   res.json({ 
     message: 'API funcionando',
